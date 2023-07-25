@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:gpt_chatbot/app/constants/constants.dart';
 import 'package:gpt_chatbot/app/models/message_model.dart';
@@ -20,6 +21,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   final ScrollController _scrollController = ScrollController();
   final typingNotifier = ValueNotifier<bool>(false);
   List<MessageModel> chatMesages = [];
+  String? selectedMood, messageInstruction;
 
   final openAI = OpenAI.instance.build(token: chatGptApiKey);
 
@@ -50,7 +52,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       setState(() {});
 
       String response = await sendAIMessage(
-        "Give me a sweet, lovely response to the message: $message",
+        "$messageInstruction: $message.",
       );
 
       final newRespMessageData = MessageModel(
@@ -69,6 +71,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   @override
   void initState() {
     super.initState();
+    selectedMood = moodsList[0];
+    messageInstruction = messageInstructions[0];
   }
 
   @override
@@ -82,7 +86,52 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("My AI"),
+          title: DropdownButtonHideUnderline(
+            child: DropdownButton2<String>(
+              isExpanded: true,
+              items: moodsList
+                  .map(
+                    (String item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
+              value: selectedMood,
+              style: const TextStyle(fontSize: 18, color: Colors.black),
+              dropdownStyleData: DropdownStyleData(
+                maxHeight: screenHeight(context) * 0.5,
+                width: screenWidth(context) * 0.9,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  color: Colors.teal[300],
+                ),
+              ),
+              onChanged: (String? mood) {
+                int indx = moodsList.indexOf(mood!);
+                setState(() {
+                  selectedMood = mood;
+                  messageInstruction = messageInstructions[indx];
+                });
+              },
+              iconStyleData: const IconStyleData(
+                icon: Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  size: 40,
+                  color: Colors.white,
+                ),
+              ),
+              menuItemStyleData: const MenuItemStyleData(
+                height: 40,
+              ),
+            ),
+          ),
         ),
         body: SizedBox(
           child: Builder(
@@ -98,7 +147,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                     child: Container(
                       child: chatMesages.isNotEmpty
                           ? ListView.builder(
-                              padding: const EdgeInsets.fromLTRB(5, 20, 0, 10),
+                              padding: const EdgeInsets.fromLTRB(8, 20, 8, 0),
                               itemCount: chatMesages.length,
                               controller: _scrollController,
                               itemBuilder: (context, index) {
@@ -133,7 +182,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                                 Expanded(
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
+                                      horizontal: 12,
+                                    ),
                                     child: TextField(
                                       controller: messageController,
                                       maxLines: 3,

@@ -14,15 +14,17 @@ class MessageWidget extends StatelessWidget {
           : CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          padding: const EdgeInsets.all(12),
           margin: EdgeInsets.only(
-            left: messageData.iSent == true ? 40 : 5,
-            right: messageData.iSent == true ? 5 : 40,
+            left: messageData.iSent == true ? 40 : 0,
+            right: messageData.iSent == true ? 0 : 40,
             top: 8,
             bottom: 4,
           ),
           decoration: BoxDecoration(
-            color: messageData.iSent ? Colors.teal[800] : const Color.fromARGB(255, 8, 34, 32),
+            color: messageData.iSent
+                ? Colors.teal[800]
+                : const Color.fromARGB(255, 8, 34, 32),
             borderRadius: BorderRadius.only(
               bottomLeft: const Radius.circular(16),
               bottomRight: const Radius.circular(16),

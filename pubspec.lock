@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.2.1+1"
+  dropdown_button2:
+    dependency: "direct main"
+    description:
+      name: dropdown_button2
+      sha256: "83c54a5022f898d63e3abe21240b64b937e676103207287e6705d3f9bb04d654"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.6"
   fake_async:
     dependency: transitive
     description:
@@ -234,4 +242,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=3.0.0-0 <4.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=3.0.0"
