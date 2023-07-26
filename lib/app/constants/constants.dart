@@ -10,6 +10,7 @@ const List<String> moodsList = [
   "Sad AI😔",
   "Romantic AI😍",
   "Angry AI😡",
+  "Neutral AI✌️",
 ];
 
 const List<String> messageInstructions = [
@@ -17,4 +18,5 @@ const List<String> messageInstructions = [
   "Give me a sad, depressing response to the message",
   "Give me a lovely, sweet response to the message",
   "Give me an angry, stubborn response to the message",
+  '',
 ];

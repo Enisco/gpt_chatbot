@@ -51,9 +51,11 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       chatMesages.add(newMessageData);
       setState(() {});
 
-      String response = await sendAIMessage(
-        "$messageInstruction: $message.",
-      );
+      String reqMessage = messageInstruction == messageInstructions[4]
+          ? "$message."
+          : "$messageInstruction: $message.";
+      print("Request Message: $reqMessage");
+      String response = await sendAIMessage(reqMessage);
 
       final newRespMessageData = MessageModel(
         message: response.trim(),
