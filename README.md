@@ -3,9 +3,12 @@
 A Flutter demo ChatBot app using ChatGPT.
 
 Using ChatGPT in Flutter is relatively easy and straightforward. 
-It has to be noted that the ChatGPT API token to be used has to be one from a ChatGPT account that has an active subscription, if not it will not work.
+It has to be noted that the ChatGPT API key to be used has to be one from a ChatGPT account that has an active subscription, if not it will not work.
 
-To get your ChatGPT Api token, follow the following steps:
+https://github.com/Enisco/gpt_chatbot/assets/49729441/eaf31083-d1a5-48d4-b002-dff19ecc821f
+
+
+To get your ChatGPT API key, follow the following steps:
 
   - Go to https://openai.com/, then at the top-right corner, click on "Log In" if you already have an account, or "Sign Up" if you don't.
 
@@ -31,7 +34,7 @@ To get your ChatGPT Api token, follow the following steps:
 
 ![Name new key](https://github.com/Enisco/gpt_chatbot/assets/49729441/2c387533-9246-4146-ad46-e52fb6ae86a2)
 
-   - Click on "Create New Key", and you will see your new Key as shown below.
+   - Click on "Create New Key", and you will see your new Key as shown below. 
    - YOU MUST COPY THE KEY AND SAVE IT SOMEWHERE, BECAUSE THIS IS THE ONLY TIME YOU CAN SEE IT. 
 
 ![Copy new key](https://github.com/Enisco/gpt_chatbot/assets/49729441/2cc8b64c-b995-4adb-b9c8-c57d14d3e63c)
